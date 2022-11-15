@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.acc.dao.DrugMapper">
+    <insert id="addDrug">
+        insert into drug.yp_information(DrugName, DrugState, DrugClass, DrugDetail, DrugPrice, DrugNum)
+        values(#{DrugName},#{DrugState},#{DrugClass},#{DrugDetail},#{DrugPrice},#{DrugNum})
+    </insert>
+
+    <update id="updateDrug">
+        update drug.yp_information
+            set DrugName = #{DrugName},DrugState = #{DrugState},DrugClass = #{DrugClass},DrugDetail = #{DrugDetail},
+                DrugPrice = #{DrugPrice},DrugNum = #{DrugNum}
+        where DrugId = #{DrugId};
+    </update>
+
+    <delete id="deleteDrug">
+        delete from drug.yp_information where DrugId = #{id}
+    </delete>
+
+    <select id="queryAllDrug" resultType="com.acc.pojo.Drugs">
+        select * from drug.yp_information
+    </select>
+
+    <select id="queryDrugById" resultType="com.acc.pojo.Drugs">
+        select * from drug.yp_information where DrugId = #{id}
+    </select>
+
+    <select id="queryDrugByName" resultType="com.acc.pojo.Drugs">
+        select * from drug.yp_information where DrugName = #{drugName}
+    </select>
+
+
+</mapper>
